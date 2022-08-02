@@ -1,1 +1,3 @@
-# google_apps_script
+```
+Here is the repository for storing codes for project purposes.
+```
