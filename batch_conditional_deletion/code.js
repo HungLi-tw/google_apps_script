@@ -1,17 +1,24 @@
-Logger.log("Clear and reset to remove i18n...")
-  {
-    var first_ss_rangeVals = ss.getRange(1, 1, ss.getLastRow(), 48).getValues()
-    var first_ss_newRangeVals = []
+function batch_conditional_deletion()
+{
+  const ss = SpreadsheetApp.openById('xxx').getSheetByName('RAW')
 
-    for (i = 0; i < first_ss_rangeVals.length; i++)
+  var ssRangeVals = ss.getRange(1, 1, ss.getLastRow(), ss.getLastColumn()).getValues()
+  var ssNewVals = []
+
+  var col = 0  // 0 is Column A, 1 is Column B ...
+  var condition = "ValueToDelete"
+
+
+  for (i = 0; i < ssRangeVals.length; i++)
+  {
+    if (ssRangeVals[i][col] !== condition)
     {
-      if (first_ss_rangeVals[i][team_col] !== "i18n")
-      {
-        first_ss_newRangeVals.push(first_ss_rangeVals[i])
-      }
+      ssNewVals.push(ssRangeVals[i]) 
     }
-    ss.clear()
-    var first_newRange = ss.getRange(1, 1, first_ss_newRangeVals.length, first_ss_newRangeVals[0].length)
-    first_newRange.setValues(first_ss_newRangeVals)
-    SpreadsheetApp.flush()
   }
+
+  var newRange = ss.getRange(1, 1, ssNewVals.length, ssNewVals[0].length)
+
+  ss.clear()
+  newRange.setValues(ssNewVals)
+}
