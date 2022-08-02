@@ -11,10 +11,6 @@ function create_report()
   folder.addFile(file)
 
   var new_file_url = new_file.getUrl()
-  var hoo_data_url = "https://docs.google.com/spreadsheets/d/1UQ9WjaL32FUm6gvGXofsfV17diq--GE--0thTIft-RQ/"
-  var tigercub_data_url = "https://docs.google.com/spreadsheets/d/1Wjz29Jwz5OEYlusaTxMc5IyXu7UvPE_Dgp2pZkfvFvQ/"
-  var bs_non_en_url = "https://docs.google.com/spreadsheets/d/1X67DYArDUHuiRIzx3GX1kHu0ou2_8C20L_4azhPV8Ic/"
-  var bs_en_url = "https://docs.google.com/spreadsheets/d/1wc0w_pxwLdQGpBRW_HkbnJL1j3B7C2o09ZSJ7t5e1ag/"
 
   var body = DocumentApp.openById(file.getId()).getBody()
   body.replaceText("{report_week}", report_date)
